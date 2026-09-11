@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model News {
+  id          String    @id @default(uuid())
+  title       String
+  url         String    @unique
+  content     String
+  imageUrl    String?
+  author      String?
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+
+  sourceId String
+  source   Source @relation(fields: [sourceId], references: [id])
+
+  categoryId String?
+  category   Category? @relation(fields: [categoryId], references: [id])
+
+  summary Summary?
+
+  @@index([sourceId])
+  @@index([categoryId])
+  @@index([publishedAt])
+}
+
+model Source {
+  id   String @id @default(uuid())
+  name String
+  url  String @unique
+
+  listSelector    String?
+  titleSelector   String?
+  contentSelector String?
+  imageSelector   String?
+  authorSelector  String?
+  dateSelector    String?
+
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  news News[]
+}
+
+model Category {
+  id   String @id @default(uuid())
+  name String @unique
+
+  news News[]
+}
+
+model Summary {
+  id        String   @id @default(uuid())
+  content   String
+  createdAt DateTime @default(now())
+
+  newsId String @unique
+  news   News   @relation(fields: [newsId], references: [id], onDelete: Cascade)
+}
