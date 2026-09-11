@@ -18,7 +18,7 @@ const publishedLabel = computed(() => {
     :to="`/news/${news.id}`"
     class="group block"
   >
-    <UCard :ui="{ body: { padding: 'p-0 sm:p-0' } }">
+    <UCard :ui="{ body: 'p-0 sm:p-0' }">
       <div class="aspect-[16/9] bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
         <img
           v-if="news.imageUrl"
@@ -42,8 +42,8 @@ const publishedLabel = computed(() => {
         <div class="flex items-center justify-between gap-2">
           <UBadge
             v-if="news.category"
-            color="amber"
-            variant="subtle"
+            color="primary"
+            variant="solid"
             size="xs"
           >
             {{ news.category.name }}

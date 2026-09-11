@@ -38,7 +38,7 @@ async function handleScrape() {
 
       <UButton
         icon="i-lucide-refresh-cw"
-        color="gray"
+        color="neutral"
         variant="outline"
         :loading="scraping"
         @click="handleScrape"
@@ -82,7 +82,7 @@ async function handleScrape() {
       icon="i-lucide-inbox"
       title="Sin resultados"
       description="No hay noticias que coincidan con estos filtros. Prueba a actualizar las fuentes o cambiar la búsqueda."
-      color="gray"
+      color="neutral"
       variant="soft"
     />
 

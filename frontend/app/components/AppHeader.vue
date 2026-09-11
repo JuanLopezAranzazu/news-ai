@@ -20,7 +20,7 @@ const today = new Date().toLocaleDateString('es-ES', {
       <div class="flex items-center gap-3">
         <UButton
           :icon="isDark ? 'i-lucide-sun' : 'i-lucide-moon'"
-          color="gray"
+          color="neutral"
           variant="ghost"
           size="xs"
           square

@@ -1,4 +1,12 @@
 <script setup lang="ts">
+import type { Category } from '~/types/news'
+
+defineProps<{
+  categories: Category[]
+  modelCategoryId: string | undefined
+  modelSearch: string
+}>()
+
 const emit = defineEmits<{
   'update:modelCategoryId': [value: string | undefined]
   'update:modelSearch': [value: string]
@@ -23,7 +31,7 @@ function selectCategory(id: string | undefined) {
     <div class="flex flex-wrap gap-2 -mx-1 overflow-x-auto pb-1">
       <UButton
         :variant="!modelCategoryId ? 'solid' : 'soft'"
-        :color="!modelCategoryId ? 'amber' : 'gray'"
+        :color="!modelCategoryId ? 'primary' : 'neutral'"
         size="xs"
         class="rounded-full"
         @click="selectCategory(undefined)"
@@ -35,7 +43,7 @@ function selectCategory(id: string | undefined) {
         v-for="cat in categories"
         :key="cat.id"
         :variant="modelCategoryId === cat.id ? 'solid' : 'soft'"
-        :color="modelCategoryId === cat.id ? 'amber' : 'gray'"
+        :color="modelCategoryId === cat.id ? 'primary' : 'neutral'"
         size="xs"
         class="rounded-full"
         @click="selectCategory(cat.id)"

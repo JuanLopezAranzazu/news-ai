@@ -52,7 +52,7 @@ const paragraphs = computed(() =>
       to="/"
       icon="i-lucide-arrow-left"
       variant="link"
-      color="gray"
+      color="neutral"
       size="sm"
       class="px-0 mb-6"
     >
@@ -62,7 +62,7 @@ const paragraphs = computed(() =>
     <div class="flex items-center gap-2 mb-3">
       <UBadge
         v-if="news.category"
-        color="amber"
+        color="primary"
         variant="subtle"
         size="xs"
       >
@@ -89,7 +89,7 @@ const paragraphs = computed(() =>
     <UAlert
       v-if="news.summary"
       icon="i-lucide-sparkles"
-      color="amber"
+      color="primary"
       variant="soft"
       title="Resumen generado con IA"
       :description="news.summary.content"
@@ -100,7 +100,7 @@ const paragraphs = computed(() =>
       <UButton
         icon="i-lucide-refresh-cw"
         size="xs"
-        color="gray"
+        color="neutral"
         variant="outline"
         :loading="regenerating"
         @click="handleRegenerate"
@@ -112,7 +112,7 @@ const paragraphs = computed(() =>
         target="_blank"
         icon="i-lucide-external-link"
         size="xs"
-        color="gray"
+        color="neutral"
         variant="ghost"
       >
         Ver original
@@ -132,7 +132,7 @@ const paragraphs = computed(() =>
   <UAlert
     v-else
     icon="i-lucide-alert-triangle"
-    color="red"
+    color="error"
     variant="soft"
     title="No encontrado"
     description="Esta noticia no existe o fue eliminada."
